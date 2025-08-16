@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FONOTONG - Ejercicios de Pronunciación Divertidos para Maestras</title>
+    <meta name="description" content="TONG, el primer músico IA educativo de México, ayuda a maestras con trabalenguas musicales para mejorar la pronunciación de los niños.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #FF6B35, #FF8A95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .cta-button {
+            background: #FFC947;
+            color: #333;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FFAB91, #4FC3F7);
+            padding: 120px 2rem 80px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #444;
+        }
+
+        .hero-cta {
+            background: #FF6B35;
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #FF6B35;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Produtos Section */
+        .produtos {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, #FFC947, #FF8A95);
+        }
+
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .produto-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .produto-card h3 {
+            color: #FF6B35;
+            margin-bottom: 1rem;
+        }
+
+        .preco {
+            font-size: 2rem;
+            color: #333;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 2rem;
+            background: #FF6B35;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-big {
+            background: #FFC947;
+            color: #333;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #FFC947;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero {
+                padding: 100px 1rem 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo-container">
+                <!-- Aqui você colocará sua logo -->
+                <img src="logo.png" alt="FONOTONG" class="logo" style="height: 60px;">
+                    <span style="color: #FFC947; font-weight: bold; font-size: 1.5rem;">FONO TONG</span>
+                </div>
+            </div>
+            <a href="#productos" class="cta-button">Ver Productos</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🎵 ¡Con TONG, hablar es divertido! 🎵</h1>
+            <p>El primer músico IA que transforma trabalenguas en canciones irresistibles para tus alumnos</p>
+            <a href="#gratis" class="hero-cta">📥 Descarga Material GRATIS</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">¿Por qué las maestras aman a TONG? 💝</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Resultados Inmediatos</h3>
+                    <p>Los niños mejoran su pronunciación desde la primera clase. ¡Comprobado por +500 maestras!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3>Músico IA Único</h3>
+                    <p>TONG canta trabalenguas en reggaeton, cumbia y pop. ¡Los niños no pueden parar de repetirlos!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Precio Accesible</h3>
+                    <p>Desde $15 USD. Mucho más barato que terapias privadas ($50-100 USD por sesión)</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Para Toda la Familia</h3>
+                    <p>Funciona en el salón de clases Y en casa. Toda la familia puede practicar junta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos Section -->
+    <section class="produtos" id="productos">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Productos que SÍ funcionan 🚀</h2>
+            <div class="produtos-grid">
+                <div class="produto-card">
+                    <h3>TONG - Primeros Pasos</h3>
+                    <p>50 exercicios básicos + áudios + guía para padres</p>
+                    <div class="preco">$15 USD</div>
+                    <a href="#" class="cta-button">Comprar Ahora</a>
+                </div>
+                
+                <div class="produto-card">
+                    <h3>Trabalenguas Musicales</h3>
+                    <p>25 trabalenguas en reggaeton + pop + cumbia</p>
+                    <div class="preco">$25 USD</div>
+                    <a href="#" class="cta-button">Comprar Ahora</a>
+                </div>
+                
+                <div class="produto-card">
+                    <h3>Kit Maestra Completo</h3>
+                    <p>200+ atividades + planos de aula + recursos visuais</p>
+                    <div class="preco">$45 USD</div>
+                    <a href="#" class="cta-button">¡MÁS POPULAR!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="gratis">
+        <div class="container">
+            <h2>🎁 ¡Descarga GRATIS tu guía de inicio!</h2>
+            <p>5 trabalenguas de TONG + guía completa para empezar HOY mismo</p>
+            <a href="#" class="cta-big">📩 QUIERO MI GUÍA GRATIS</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 FONOTONG. Todos los derechos reservados.</p>
+            <p>TONG - El primer músico IA educativo de México 🤖🎵</p>
+            <div class="social-links">
+                <a href="#">📱 Instagram</a>
+                <a href="#">🎵 TikTok</a>
+                <a href="#">📧 Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animação simples de entrada
+        window.addEventListener('scroll', function() {
+            const cards = document.querySelectorAll('.feature-card, .produto-card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if (cardTop < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
