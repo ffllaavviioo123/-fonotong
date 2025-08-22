@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JurisIA - Seja Nosso Colaborador | Inteligência Artificial para Advocacia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .logo span {
+            color: #c0392b;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1e3c72;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+        }
+
+        /* Opportunity Section */
+        .opportunity {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e3c72;
+        }
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .opportunity-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .opportunity-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .opportunity-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        /* Business Model */
+        .business-model {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #1e3c72;
+        }
+
+        .service-card h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .price-tag {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* Commission Section */
+        .commission {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .commission-highlight {
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .commission-percentage {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .earnings-example {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        /* Requirements */
+        .requirements {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+
+        .requirement-item::before {
+            content: '✓';
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        /* Support Section */
+        .support {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .support-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .support-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-form {
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 2rem auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(30, 60, 114, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .commission-percentage {
+                font-size: 3rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Juris<span>IA</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#oportunidade">Oportunidade</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#comissao">Comissão</a></li>
+                        <li><a href="#requisitos">Requisitos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <h1>Seja Nosso Colaborador</h1>
+                <p class="subtitle">Ganhe <strong>30%</strong> de comissão vendendo soluções de IA para advogados</p>
+                <a href="#contato" class="cta-button">Quero Fazer Parte da Equipe</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="oportunidade" class="opportunity">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Uma Oportunidade Única no Mercado Jurídico</h2>
+            <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+                O mercado jurídico brasileiro movimenta <strong>R$ 50 bilhões</strong> por ano e está passando por uma transformação digital. 
+                A JurisIA está na vanguarda dessa revolução, oferecendo soluções de Inteligência Artificial que realmente fazem a diferença.
+            </p>
+            
+            <div class="opportunity-grid">
+                <div class="opportunity-card animate-on-scroll">
+                    <div class="opportunity-icon">🚀</div>
+                    <h3>Mercado em Expansão</h3>
+                    <p>Mais de 1,3 milhão de advogados no Brasil buscando inovação e eficiência em seus escritórios.</p>
+                </div>
+                
+                <div class="opportunity-card animate-on-scroll">
+                    <div class="opportunity-icon">💰</div>
+                    <h3>Alta Rentabilidade</h3>
+                    <p>Produtos com ticket médio de R$ 800 a R$ 4.000, gerando comissões substanciais para nossos colaboradores.</p>
+                </div>
+                
+                <div class="opportunity-card animate-on-scroll">
+                    <div class="opportunity-icon">🎯</div>
+                    <h3>Nicho Específico</h3>
+                    <p>Foco exclusivo no setor jurídico, com soluções desenvolvidas especificamente para as dores dos advogados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="business-model">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">O Que Você Vai Vender</h2>
+            
+            <div class="model-grid">
+                <div class="service-card animate-on-scroll">
+                    <h3>📱 Marketing Jurídico Digital</h3>
+                    <p><strong>Objetivo:</strong> Atrair mais clientes para o escritório</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Gestão do Google Meu Negócio</li>
+                        <li>Posts otimizados para LinkedIn/Instagram</li>
+                        <li>Tratamento profissional de imagens</li>
+                        <li>Textos persuasivos (dentro das normas da OAB)</li>
+                    </ul>
+                    <div class="price-tag">R$ 500 - R$ 1.200/mês</div>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <h3>🤖 Automação Jurídica com IA</h3>
+                    <p><strong>Objetivo:</strong> Economizar tempo e aumentar eficiência</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Bots para análise de contratos</li>
+                        <li>Geração automática de peças jurídicas</li>
+                        <li>Organização inteligente de documentos</li>
+                        <li>Relatórios automatizados de casos</li>
+                    </ul>
+                    <div class="price-tag">R$ 1.500 - R$ 4.000/projeto</div>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <h3>🎓 Consultoria e Treinamentos</h3>
+                    <p><strong>Objetivo:</strong> Capacitar e diferenciar o escritório</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Workshops sobre IA no Direito</li>
+                        <li>Treinamentos em automação</li>
+                        <li>Consultoria para inovação interna</li>
+                        <li>Suporte técnico especializado</li>
+                    </ul>
+                    <div class="price-tag">R$ 800 - R$ 3.000/sessão</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comissao" class="commission">
+        <div class="container">
+            <h2 class="section-title">Sua Remuneração</h2>
+            
+            <div class="commission-highlight animate-on-scroll">
+                <div class="commission-percentage">30%</div>
+                <h3 style="font-size: 2rem; margin-bottom: 1rem;">De Comissão Sobre Todas as Vendas</h3>
+                <p style="font-size: 1.2rem;">
+                    Receba 30% de tudo que vender, sem teto máximo. Quanto mais você vende, mais você ganha!
+                </p>
+            </div>
+            
+            <div class="earnings-example animate-on-scroll">
+                <h3 style="margin-bottom: 1rem;">💡 Exemplo Prático de Ganhos:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <h4>Cenário Conservador</h4>
+                        <p>5 vendas/mês × R$ 1.000 médio</p>
+                        <p><strong>Sua comissão: R$ 1.500/mês</strong></p>
+                    </div>
+                    <div>
+                        <h4>Cenário Realista</h4>
+                        <p>10 vendas/mês × R$ 1.500 médio</p>
+                        <p><strong>Sua comissão: R$ 4.500/mês</strong></p>
+                    </div>
+                    <div>
+                        <h4>Cenário Otimista</h4>
+                        <p>15 vendas/mês × R$ 2.000 médio</p>
+                        <p><strong>Sua comissão: R$ 9.000/mês</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="requisitos" class="requirements">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">O Que Buscamos em Você</h2>
+            
+            <div class="requirements-grid">
+                <div class="requirement-item animate-on-scroll">
+                    <span>Experiência em vendas ou relacionamento comercial</span>
+                </div>
+                <div class="requirement-item animate-on-scroll">
+                    <span>Facilidade para comunicação e apresentações</span>
+                </div>
+                <div class="requirement-item animate-on-scroll">
+                    <span>Interesse genuíno em tecnologia e inovação</span>
+                </div>
+                <div class="requirement-item animate-on-scroll">
+                    <span>Capacidade de trabalhar de forma autônoma</span>
+                </div>
+                <div class="requirement-item animate-on-scroll">
+                    <span>Disponibilidade para prospecção ativa</span>
+                </div>
+                <div class="requirement-item animate-on-scroll">
+                    <span>Conhecimento básico do mercado jurídico (diferencial)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Todo o Suporte Que Você Precisa</h2>
+            
+            <div class="support-grid">
+                <div class="support-item animate-on-scroll">
+                    <div class="support-icon">📚</div>
+                    <h3>Treinamento Completo</h3>
+                    <p>Material didático, scripts de vendas e treinamento sobre todos os produtos e serviços.</p>
+                </div>
+                
+                <div class="support-item animate-on-scroll">
+                    <div class="support-icon">🛠️</div>
+                    <h3>Ferramentas Profissionais</h3>
+                    <p>Acesso a CRM, materiais de apresentação, propostas prontas e landing pages otimizadas.</p>
+                </div>
+                
+                <div class="support-item animate-on-scroll">
+                    <div class="support-icon">👥</div>
+                    <h3>Suporte Técnico</h3>
+                    <p>Equipe técnica disponível para esclarecer dúvidas dos clientes e apoiar suas vendas.</p>
+                </div>
+                
+                <div class="support-item animate-on-scroll">
+                    <div class="support-icon">📊</div>
+                    <h3>Acompanhamento de Resultados</h3>
+                    <p>Dashboard para acompanhar suas vendas, comissões e performance em tempo real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="final-cta">
+        <div class="container">
+            <h2 class="section-title">Pronto Para Começar?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2rem;">
+                Junte-se à JurisIA e faça parte da revolução tecnológica no Direito brasileiro!
+            </p>
+            
+            <div class="cta-form animate-on-scroll">
+                <h3 style="margin-bottom: 2rem;">Candidate-se Agora</h3>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">WhatsApp:</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experiencia">Experiência em Vendas:</label>
+                        <textarea id="experiencia" name="experiencia" placeholder="Conte um pouco sobre sua experiência comercial..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="motivacao">Por que quer trabalhar conosco?</label>
+                        <textarea id="motivacao" name="motivacao" placeholder="O que te motiva a fazer parte da JurisIA?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar Candidatura</button>
+                </form>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">Ou entre em contato diretamente:</p>
+                <p>📧 <strong>contato@jurisia.com.br</strong></p>
+                <p>📱 <strong>(11) 99999-9999</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 JurisIA - Inteligência Artificial para o Direito. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission (you can integrate with your backend)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo interesse! Entraremos em contato em breve.');
+            // Here you would typically send the form data to your server
+        });
+    </script>
+</body>
+</html>
